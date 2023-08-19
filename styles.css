@@ -1,0 +1,27 @@
+html,body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: helvetica, 'Roboto', sans-serif;
+    font-size: 1em;
+}
+
+
+
+.interface-container {
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 1rem;
+    text-align: center;
+}
+
+.equal {
+    grid-column: 3/5; /* Stretch equal sign to fill up the empty spot */
+    
+}
