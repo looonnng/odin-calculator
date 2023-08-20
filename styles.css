@@ -10,16 +10,15 @@ body {
   justify-content: center;
   align-items: center;
   font-family: helvetica, "Roboto", sans-serif;
-  font-size: 1em;
 }
 
 .interface-container {
   display: grid;
-  grid-template-columns: repeat(4, 25px);
+  grid-template-columns: repeat(4, 2em);
   grid-template-rows: repeat(5, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 1em;
   text-align: center;
-  background-color: #352F44;
+  background-color: #352f44;
   padding: 1em 0.75em;
   border-radius: 0 0 20px 20px;
 }
@@ -29,8 +28,27 @@ body {
 }
 
 .button {
-  background-color: #352F44;
+  font-size: 1em;
+  background-color: #352f44;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
 }
 
+.operator {
+  color: rgb(185, 78, 78);
+}
+
+.result-container {
+  background-color: #352f44;
+  border-radius: 20px 20px 0 0;
+}
+
+.current-result {
+  text-align: right;
+  font-size: 1.75em;
+  padding: 0 0.5em;
+}
+
+.prev-result {
+  font-size: 0.75em;
+  padding: 2em 1em;
+}
