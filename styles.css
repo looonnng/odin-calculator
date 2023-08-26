@@ -19,7 +19,7 @@ body {
   grid-gap: 1em;
   text-align: center;
   background-color: #352f44;
-  padding: 1em 0.75em;
+  padding: 0.75em;
   border-radius: 0 0 20px 20px;
 }
 
@@ -38,17 +38,28 @@ body {
 }
 
 .result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #352f44;
   border-radius: 20px 20px 0 0;
+  padding: 1em 0.5em 0 0.5em;
+}
+
+.current-result,
+.prev-result {
+  width: 236.5px;
+  height: 46px;
+  overflow-x: scroll; /* when user inputs more than 11 numbers */
 }
 
 .current-result {
   text-align: right;
   font-size: 1.75em;
-  padding: 0 0.5em;
+  margin: 0.25em 0;
 }
 
 .prev-result {
   font-size: 0.75em;
-  padding: 2em 1em;
+  padding: 0.5em 0;
 }
