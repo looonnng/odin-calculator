@@ -29,6 +29,7 @@ const prevDisplay = document.querySelector(".prev-result");
 const equal = document.querySelector("#equal");
 const clear = document.querySelector("#clear");
 const clearEntry = document.querySelector("#clear-entry");
+const decimal = document.querySelector("#decimal");
 
 //Event Listeners
 nums.forEach((num) => {
@@ -41,6 +42,10 @@ ops.forEach((op) => {
   op.addEventListener("click", (e) => {
     handleOperator(e.target.textContent);
   });
+});
+
+decimal.addEventListener("click", (e) => {
+  handleDecimal(e.target.textContent);
 });
 
 equal.addEventListener("click", () => {
@@ -65,10 +70,19 @@ function calculate(op, prevNum, currNum) {
   return result;
 }
 
+function handleDecimal(dec) {
+  if (!(currentNum.includes('.'))) {
+    currentNum += dec;
+    currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+  }
+}
+
 function handleNumber(num) {
   if (currentNum.length < 11) {
-    currentNum += num;
-    currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+    if (currentNum[0] != "0" || currentNum.includes('.')) {
+      currentNum += num;
+      currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+    }
   }
 }
 
