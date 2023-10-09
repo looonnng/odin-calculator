@@ -30,6 +30,7 @@ const equal = document.querySelector("#equal");
 const clear = document.querySelector("#clear");
 const clearEntry = document.querySelector("#clear-entry");
 const decimal = document.querySelector("#decimal");
+const plusOrMinus = document.querySelector("#plus-or-minus");
 
 //Event Listeners
 nums.forEach((num) => {
@@ -60,6 +61,10 @@ clearEntry.addEventListener("click", () => {
   handleClearEntry();
 });
 
+plusOrMinus.addEventListener("click", () => {
+  handlePlusOrMinus();
+});
+
 //Functions
 function calculate(op, prevNum, currNum) {
   let result = operators[op](prevNum, currNum);
@@ -71,7 +76,7 @@ function calculate(op, prevNum, currNum) {
 }
 
 function handleDecimal(dec) {
-  if (!(currentNum.includes('.'))) {
+  if (!currentNum.includes(".")) {
     currentNum += dec;
     currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
   }
@@ -79,7 +84,7 @@ function handleDecimal(dec) {
 
 function handleNumber(num) {
   if (currentNum.length < 11) {
-    if (currentNum[0] != "0" || currentNum.includes('.')) {
+    if (currentNum[0] != "0" || currentNum.includes(".")) {
       currentNum += num;
       currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
     }
@@ -115,9 +120,11 @@ function handleOperator(op) {
 }
 
 function handleCalculation() {
+  previousNum = previousNum.toString(); //After one calculation, prevNum will be typeof num, this prevents that
   if (currentNum === "0" && operator === "/") {
     // user input number is typeof string at first - fix doubling clicking operations that lead to "ERROR"
     handleDivideByZero();
+    console.log('test');
   } else if (currentNum && operator && previousNum) {
     prevDisplay.textContent = `${previousNum} ${operator} ${currentNum} = ${calculate(
       operator,
@@ -127,6 +134,7 @@ function handleCalculation() {
     previousNum = calculate(operator, previousNum, currentNum);
     currDisplay.textContent = `${previousNum} ${operator}`;
     currentNum = "";
+    console.log('test2');
   }
 }
 
@@ -156,4 +164,23 @@ function handleDivideByZero() {
   currentNum = "";
   operator = "";
   previousNum = "";
+}
+
+function handlePlusOrMinus() {
+  if (currentNum) {
+    if (currentNum.includes("-")) {
+      currentNum = currentNum.replace("-", "");
+      currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+    } else {
+      currentNum = "-" + currentNum;
+      currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+    }
+  } else if (previousNum) {
+    if (previousNum.toString().includes("-")) {
+      previousNum = previousNum.toString().replace("-", "");
+      currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+    } else {
+      previousNum = "-" + previousNum.toString();
+      currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+  }}
 }
