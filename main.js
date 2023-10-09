@@ -124,7 +124,6 @@ function handleCalculation() {
   if (currentNum === "0" && operator === "/") {
     // user input number is typeof string at first - fix doubling clicking operations that lead to "ERROR"
     handleDivideByZero();
-    console.log('test');
   } else if (currentNum && operator && previousNum) {
     prevDisplay.textContent = `${previousNum} ${operator} ${currentNum} = ${calculate(
       operator,
@@ -134,7 +133,6 @@ function handleCalculation() {
     previousNum = calculate(operator, previousNum, currentNum);
     currDisplay.textContent = `${previousNum} ${operator}`;
     currentNum = "";
-    console.log('test2');
   }
 }
 
