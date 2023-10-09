@@ -4,7 +4,10 @@ body {
   height: 100%;
   box-sizing: border-box;
 }
-
+.button,
+.result-container {
+  color: #e8e6e3;
+}
 body {
   display: flex;
   justify-content: center;
