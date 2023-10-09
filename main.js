@@ -111,11 +111,23 @@ function handleOperator(op) {
       currentNum = "";
       currDisplay.textContent = "";
     }
-  } else {
+  } else if (currentNum) {
+    if (previousNum) {
+      if (op == operator) {
+        handleCalculation();
+      } else if (op != operator) {
+        operator = op;
+        currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+      }
+    } else {
+      operator = op;
+      previousNum = currentNum;
+      currDisplay.textContent = `${previousNum} ${operator}`;
+      currentNum = "";
+    }
+  } else if (previousNum) {
     operator = op;
-    previousNum = currentNum;
     currDisplay.textContent = `${previousNum} ${operator}`;
-    currentNum = "";
   }
 }
 
@@ -180,5 +192,6 @@ function handlePlusOrMinus() {
     } else {
       previousNum = "-" + previousNum.toString();
       currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
-  }}
+    }
+  }
 }
