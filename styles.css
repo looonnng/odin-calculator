@@ -24,6 +24,7 @@ body {
   background-color: #352f44;
   padding: 0.75em;
   border-radius: 0 0 20px 20px;
+  justify-content: center;
 }
 
 #equal {
@@ -53,7 +54,7 @@ body {
 .prev-result {
   width: 236.5px;
   height: 46px;
-  overflow-x: scroll; /* when user inputs more than 11 numbers */
+  overflow-x: auto; /* when user inputs more than 11 numbers */
 }
 
 .current-result {
