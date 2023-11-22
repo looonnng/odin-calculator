@@ -28,7 +28,7 @@ body {
 }
 
 #equal {
-  grid-column: 3/5; /* Stretch equal sign to fill up the empty spot */
+  grid-column: span 2; /* Stretch equal sign to fill up the empty spot */
 }
 
 .button {
@@ -44,26 +44,25 @@ body {
 .result-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   background-color: #352f44;
   border-radius: 20px 20px 0 0;
-  padding: 1em 0.5em 0 0.5em;
+  padding: 1em 0.75em 0 0.75em;
 }
 
 .current-result,
 .prev-result {
-  width: 236.5px;
-  height: 46px;
+  max-width: 176px;
+  min-height: 46px;
   overflow-x: auto; /* when user inputs more than 11 numbers */
 }
 
 .current-result {
   text-align: right;
-  font-size: 1.75em;
+  font-size: 1.5em;
   margin: 0.25em 0;
 }
 
 .prev-result {
   font-size: 0.75em;
-  padding: 0.5em 0;
 }
