@@ -14,13 +14,13 @@ body {
 }
 
 .button,
-.result-container,
-p {
+.result-container {
   color: #fec62f;
 }
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: helvetica, "Roboto", sans-serif;
@@ -66,21 +66,21 @@ body {
   width: auto;
   min-height: 46px;
   overflow: auto;
-  border-left: dotted 1px #fec62f;
-  border-right: dotted 1px #fec62f;
+  border-left: solid 1px #fec62f;
+  border-right: solid 1px #fec62f;
 }
 
 .current-result {
   text-align: right;
   font-size: 1.5em;
   padding: 0.25em 0.25em 0.25em 0;
-  border-bottom: dotted 1px #fec62f;
+  border-bottom: solid 1px #fec62f;
 }
 
 .prev-result {
   font-size: 0.5em;
   padding: 0.5em 0 0 0.5em;
-  border-top: dotted 1px #fec62f;
+  border-top: solid 1px #fec62f;
 }
 
 .horns {
@@ -113,10 +113,22 @@ body {
   flex-shrink: 0;
 }
 
-p {
+.result-container > p {
   font-size: 0.75em;
   font-weight: 800;
   margin: 0;
   padding-bottom: 0.75em;
   text-align: center;
+}
+
+.footer {
+  color: black;
+  display: flex;
+  gap: 1em;
+}
+
+#github {
+  color: black;
+  font-size: 3em;
+  margin-bottom: 0;
 }
