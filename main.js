@@ -20,7 +20,6 @@ let previousNum = "";
 let result = "";
 
 // DOM References
-const interface = document.querySelector(".interface-container");
 const btns = document.querySelectorAll("button");
 const ops = document.querySelectorAll(".operator");
 const nums = document.querySelectorAll(".number");
@@ -33,6 +32,12 @@ const decimal = document.querySelector("#decimal");
 const plusOrMinus = document.querySelector("#plus-or-minus");
 
 //Event Listeners
+
+document.addEventListener('keydown', (e) => {
+  handleNumber(e.key);
+});
+
+
 nums.forEach((num) => {
   num.addEventListener("click", (e) => {
     handleNumber(e.target.textContent);
@@ -83,10 +88,12 @@ function handleDecimal(dec) {
 }
 
 function handleNumber(num) {
-  if (currentNum.length < 11) {
-    if (currentNum[0] != "0" || currentNum.includes(".")) {
-      currentNum += num;
-      currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+  if (Number(num)) {
+    if (currentNum.length < 11) {
+      if (currentNum[0] != "0" || currentNum.includes(".")) {
+        currentNum += num;
+        currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
+      }
     }
   }
 }
