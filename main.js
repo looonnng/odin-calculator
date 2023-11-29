@@ -33,10 +33,17 @@ const plusOrMinus = document.querySelector("#plus-or-minus");
 
 //Event Listeners
 
-document.addEventListener('keydown', (e) => {
+document.addEventListener("keydown", (e) => {
   handleNumber(e.key);
+  if (e.key == "=" || e.key == "Enter") {
+    console.log("test");
+    handleCalculation();
+  }
+  if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/") {
+    handleOperator(e.key);
+    e.preventDefault();
+  }
 });
-
 
 nums.forEach((num) => {
   num.addEventListener("click", (e) => {
@@ -88,12 +95,10 @@ function handleDecimal(dec) {
 }
 
 function handleNumber(num) {
-  if (Number(num)) {
-    if (currentNum.length < 11) {
-      if (currentNum[0] != "0" || currentNum.includes(".")) {
-        currentNum += num;
-        currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
-      }
+  if ((Number(num) || num === "0") && currentNum.length < 11) {
+    if (currentNum[0] != "0" || currentNum.includes(".")) {
+      currentNum += num;
+      currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
     }
   }
 }
