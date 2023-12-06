@@ -36,12 +36,17 @@ const plusOrMinus = document.querySelector("#plus-or-minus");
 document.addEventListener("keydown", (e) => {
   handleNumber(e.key);
   if (e.key == "=" || e.key == "Enter") {
-    console.log("test");
     handleCalculation();
   }
   if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/") {
     handleOperator(e.key);
     e.preventDefault();
+  }
+  if (e.key == "Backspace") {
+    handleBackSpace();
+  }
+  if (e.key == ".") {
+    handleDecimal(e.key);
   }
 });
 
@@ -205,5 +210,15 @@ function handlePlusOrMinus() {
       previousNum = "-" + previousNum.toString();
       currDisplay.textContent = `${previousNum} ${operator} ${currentNum}`;
     }
+  }
+}
+
+function handleBackSpace() {
+  if (currentNum) {
+    currDisplay.textContent = currDisplay.textContent.slice(
+      0,
+      currDisplay.textContent.length - 1
+    );
+    currentNum = currentNum.slice(0, currentNum.length - 1);
   }
 }
